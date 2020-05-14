@@ -38,3 +38,12 @@ pip install --user keras
 pip install --user jupyter
 pip install --user pillow
 pip install --user matplotlib
+
+# verify installs
+python -c 'import numpy; print(numpy.__version__)'
+python -c 'import tensorflow; print(tensorflow.__version__)'
+python -c 'import keras; print(keras.__version__)'
+python -c 'import jupyter; print(jupyter.__version__)'
+python -c 'import PIL; print(PIL.__version__)'
+python -c 'import matplotlib; print(matplotlib.__version__)'
+
