@@ -1,0 +1,31 @@
+sudo -S apt-get updat
+sudo -S apt install -y python3-pip python3-pil python3-smbus python3-matplotlib cmake
+
+# add 4 GB swap file
+sudo fallocate -l 4G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+sudo swapon --show
+sudo cp /etc/fstab /etc/fstab.bak
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# max frequency & power
+sudo jetson_clocks
+sudo nvpmodel -m 0
+
+# dependencies
+sudo apt install -y git \
+cmake \
+libatlas-base-dev \
+ gfortran \
+python3-dev \
+python3-pip \
+libhdf5-serial-dev \
+hdf5-tools
+
+# install pip 
+cd ~
+wget https://bootstrap.pypa.io/get-pip.py
+sudo python get-pip.py
+rm get-pip.py
