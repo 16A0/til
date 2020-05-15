@@ -62,7 +62,7 @@ pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 # instal torchvision
 sudo apt-get install libjpeg-dev zlib1g-dev
 # git clone --branch <version> https://github.com/pytorch/vision torchvision  
-git clone --branch v0.5.0 https://github.com/pytorch/vision torchvision
+# git clone --branch v0.5.0 https://github.com/pytorch/vision torchvision
 # see below for version of torchvision to download
 # PyTorch v1.0 - torchvision v0.2.2
 # PyTorch v1.1 - torchvision v0.3.0
@@ -70,6 +70,7 @@ git clone --branch v0.5.0 https://github.com/pytorch/vision torchvision
 # PyTorch v1.3 - torchvision v0.4.2
 # PyTorch v1.4 - torchvision v0.5.0
 # PyTorch v1.5 - torchvision v0.6.0
+sudo python setup.py install
 cd torchvision
 sudo apt-get install python-future
 pip install --user requests
