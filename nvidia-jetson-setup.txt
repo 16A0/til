@@ -47,3 +47,42 @@ python -c 'import jupyter; print(jupyter.__version__)'
 python -c 'import PIL; print(PIL.__version__)'
 python -c 'import matplotlib; print(matplotlib.__version__)'
 
+# Python 2.7 install torch
+wget https://nvidia.box.com/shared/static/1v2cc4ro6zvsbu0p8h6qcuaqco1qcsif.whl -O torch-1.4.0-cp27-cp27mu-linux_aarch64.whl
+sudo apt-get install libopenblas-base libopenmpi-dev 
+pip install torch-1.4.0-cp27-cp27mu-linux_aarch64.whl
+
+# Python 3.6 install torch
+wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+sudo apt-get install python3-pip libopenblas-base libopenmpi-dev 
+pip3 install Cython
+pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+
+# instal torchvision
+sudo apt-get install libjpeg-dev zlib1g-dev
+git clone --branch <version> https://github.com/pytorch/vision torchvision   
+# see below for version of torchvision to download
+# PyTorch v1.0 - torchvision v0.2.2
+# PyTorch v1.1 - torchvision v0.3.0
+# PyTorch v1.2 - torchvision v0.4.0
+# PyTorch v1.3 - torchvision v0.4.2
+# PyTorch v1.4 - torchvision v0.5.0
+# PyTorch v1.5 - torchvision v0.6.0
+cd torchvision
+sudo python setup.py install
+cd ../  # attempting to load torchvision from build dir will result in import error
+pip install 'pillow<7' # not needed for torchvision v0.5.0+
+
+# verification
+>>> import torch
+>>> print(torch.__version__)
+>>> print('CUDA available: ' + str(torch.cuda.is_available()))
+>>> print('cuDNN version: ' + str(torch.backends.cudnn.version()))
+>>> a = torch.cuda.FloatTensor(2).zero_()
+>>> print('Tensor a = ' + str(a))
+>>> b = torch.randn(2).cuda()
+>>> print('Tensor b = ' + str(b))
+>>> c = a + b
+>>> print('Tensor c = ' + str(c))
+>>> import torchvision
+>>> print(torchvision.__version__)
