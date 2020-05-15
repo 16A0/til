@@ -91,3 +91,10 @@ pip install 'pillow<7' # not needed for torchvision v0.5.0+
 >>> print('Tensor c = ' + str(c))
 >>> import torchvision
 >>> print(torchvision.__version__)
+
+# maximize performance by setting the static maximum frequencies of the CPU, GPU, and EMC clocks
+sudo jetson_clocks
+# update nano 
+sudo apt update && sudo apt dist-upgrade -y --autoremove
+# start jupyter server
+jupyter notebook
