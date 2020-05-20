@@ -57,12 +57,13 @@ python -c 'import matplotlib; print(matplotlib.__version__)'
 # Python 2.7 install torch
 wget https://nvidia.box.com/shared/static/1v2cc4ro6zvsbu0p8h6qcuaqco1qcsif.whl -O torch-1.4.0-cp27-cp27mu-linux_aarch64.whl
 sudo apt-get install libopenblas-base libopenmpi-dev 
-pip install torch-1.4.0-cp27-cp27mu-linux_aarch64.whl
+pip install --user torch-1.4.0-cp27-cp27mu-linux_aarch64.whl
+
 
 # Python 3.6 install torch
 wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 sudo apt-get install python3-pip libopenblas-base libopenmpi-dev 
-pip3 install Cython
+pip install Cython
 pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
 
 # instal torchvision
@@ -82,21 +83,23 @@ sudo apt-get install python-future
 pip install --user requests
 sudo python setup.py install
 cd ../  # attempting to load torchvision from build dir will result in import error
-pip install 'pillow<7' # not needed for torchvision v0.5.0+
+sudo -H pip install 'pillow<7' # not needed for torchvision v0.5.0+
+
+# bailed & downloaded https://github.com/dusty-nv/jetson-inference/blob/master/tools/install-pytorch.sh
 
 # verification
->>> import torch
->>> print(torch.__version__)
->>> print('CUDA available: ' + str(torch.cuda.is_available()))
->>> print('cuDNN version: ' + str(torch.backends.cudnn.version()))
->>> a = torch.cuda.FloatTensor(2).zero_()
->>> print('Tensor a = ' + str(a))
->>> b = torch.randn(2).cuda()
->>> print('Tensor b = ' + str(b))
->>> c = a + b
->>> print('Tensor c = ' + str(c))
->>> import torchvision
->>> print(torchvision.__version__)
+import torch 
+print(torch.__version__)
+print('CUDA available: ' + str(torch.cuda.is_available()))
+print('cuDNN version: ' + str(torch.backends.cudnn.version()))
+a = torch.cuda.FloatTensor(2).zero_()
+print('Tensor a = ' + str(a))
+b = torch.randn(2).cuda()
+print('Tensor b = ' + str(b))
+c = a + b
+print('Tensor c = ' + str(c))
+import torchvision
+print(torchvision.__version__)
 
 # maximize performance by setting the static maximum frequencies of the CPU, GPU, and EMC clocks
 sudo jetson_clocks
