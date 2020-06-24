@@ -79,3 +79,5 @@ sudo apt install jupyter-core
 pip3 install notebook
 # start jupyter server
 jupyter notebook
+# install matplotlib
+sudo -H pip3 install matplotlib
