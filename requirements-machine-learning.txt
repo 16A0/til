@@ -81,3 +81,4 @@ pip3 install notebook
 jupyter notebook
 # install matplotlib
 sudo -H pip3 install matplotlib
+
