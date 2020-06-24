@@ -105,7 +105,9 @@ print(torchvision.__version__)
 sudo jetson_clocks
 # update nano 
 sudo apt update && sudo apt dist-upgrade -y --autoremove
-#install jupyter notebook
+#install jupyter 
 sudo apt install jupyter-core
+# install notebook
+pip3 install notebook
 # start jupyter server
 jupyter notebook
