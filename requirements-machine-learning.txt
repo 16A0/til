@@ -1,0 +1,81 @@
+# python modeuls in user directory
+pip install -U pip setuptools --user
+pip install --user numpy
+#pip install --user --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v42 tensorflow-gpu==1.13.1+nv19.3
+# install tensorflow
+sudo apt-get install libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev liblapack-dev libblas-dev gfortran
+sudo pip install -U pip testresources setuptools
+sudo pip install -U numpy==1.16.1 future==0.17.1 mock==3.0.5 h5py==2.9.0 keras_preprocessing==1.0.5 keras_applications==1.0.8 gast==0.2.2 futures protobuf pybind11
+
+# end tensorflow install
+pip install --user keras
+pip install --user jupyter
+pip install --user pillow
+sudo apt-get install libfreetype6-dev
+pip install --user matplotlib
+
+# verify installs
+python -c 'import numpy; print(numpy.__version__)'
+python -c 'import tensorflow; print(tensorflow.__version__)'
+python -c 'import keras; print(keras.__version__)'
+python -c 'import jupyter; print(jupyter.__version__)'
+python -c 'import PIL; print(PIL.__version__)'
+python -c 'import matplotlib; print(matplotlib.__version__)'
+
+# Python 2.7 install torch
+wget https://nvidia.box.com/shared/static/1v2cc4ro6zvsbu0p8h6qcuaqco1qcsif.whl -O torch-1.4.0-cp27-cp27mu-linux_aarch64.whl
+sudo apt-get install libopenblas-base libopenmpi-dev 
+pip install --user torch-1.4.0-cp27-cp27mu-linux_aarch64.whl
+
+
+# Python 3.6 install torch
+wget https://nvidia.box.com/shared/static/ncgzus5o23uck9i5oth2n8n06k340l6k.whl -O torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+sudo apt-get install python3-pip libopenblas-base libopenmpi-dev 
+pip install Cython
+pip3 install numpy torch-1.4.0-cp36-cp36m-linux_aarch64.whl
+
+# instal torchvision
+sudo apt-get install libjpeg-dev zlib1g-dev
+# git clone --branch <version> https://github.com/pytorch/vision torchvision  
+# git clone --branch v0.5.0 https://github.com/pytorch/vision torchvision
+# see below for version of torchvision to download
+# PyTorch v1.0 - torchvision v0.2.2
+# PyTorch v1.1 - torchvision v0.3.0
+# PyTorch v1.2 - torchvision v0.4.0
+# PyTorch v1.3 - torchvision v0.4.2
+# PyTorch v1.4 - torchvision v0.5.0
+# PyTorch v1.5 - torchvision v0.6.0
+sudo python setup.py install
+cd torchvision
+sudo apt-get install python-future
+pip install --user requests
+sudo python setup.py install
+cd ../  # attempting to load torchvision from build dir will result in import error
+sudo -H pip install 'pillow<7' # not needed for torchvision v0.5.0+
+
+# bailed & downloaded https://github.com/dusty-nv/jetson-inference/blob/master/tools/install-pytorch.sh
+
+# verification
+import torch 
+print(torch.__version__)
+print('CUDA available: ' + str(torch.cuda.is_available()))
+print('cuDNN version: ' + str(torch.backends.cudnn.version()))
+a = torch.cuda.FloatTensor(2).zero_()
+print('Tensor a = ' + str(a))
+b = torch.randn(2).cuda()
+print('Tensor b = ' + str(b))
+c = a + b
+print('Tensor c = ' + str(c))
+import torchvision
+print(torchvision.__version__)
+
+# maximize performance by setting the static maximum frequencies of the CPU, GPU, and EMC clocks
+sudo jetson_clocks
+# update nano 
+sudo apt update && sudo apt dist-upgrade -y --autoremove
+#install jupyter 
+sudo apt install jupyter-core
+# install notebook
+pip3 install notebook
+# start jupyter server
+jupyter notebook
