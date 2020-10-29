@@ -1,0 +1,33 @@
+sudo -S apt-get update
+sudo apt update
+sudo apt install nvidia-jetpack
+
+# check version of jetpack
+sudo apt-cache show nvidia-jetpack
+# 29 OCT 2020 results below
+# Package: nvidia-jetpack
+# Version: 4.3-b134
+# Architecture: arm64
+# Maintainer: NVIDIA Corporation
+# Installed-Size: 194
+
+# https://docs.nvidia.com/jetson/jetpack/install-jetpack/index.html
+
+sudo apt install nvidia-jetpack
+# Reading package lists... Done
+# Building dependency tree       
+# Reading state information... Done
+# nvidia-jetpack is already the newest version (4.3-b134).
+
+sudo apt show nvidia-jetpack
+
+# because running jetpack 4.3 is installed
+sudo apt autoremove --purge nvidia-container-csv-cuda libopencv-python libvisionworks-sfm-dev libvisionworks-dev libvisionworks-samples libnvparsers6 libcudnn7-doc libcudnn7-dev libnvinfer-samples libnvinfer-bin nvidia-container-csv-cudnn libvisionworks-tracking-dev vpi-samples tensorrt libopencv libnvinfer-doc libnvparsers-dev libcudnn7 libnvidia-container0 cuda-toolkit-10-0 nvidia-container-csv-visionworks graphsurgeon-tf libopencv-samples python-libnvinfer-dev libnvinfer-plugin-dev libnvinfer-plugin6 nvidia-container-toolkit libnvinfer-dev libvisionworks libopencv-dev nvidia-l4t-jetson-multimedia-api vpi-dev vpi python3-libnvinfer python3-libnvinfer-dev opencv-licenses nvidia-container-csv-tensorrt libnvinfer6 libnvonnxparsers-dev libnvonnxparsers6 uff-converter-tf nvidia-docker2 libvisionworks-sfm libnvidia-container-tools nvidia-container-runtime python-libnvinfer libvisionworks-tracking
+
+# purge local repo
+sudo apt purge cuda-repo-l4t-10-0-local-10.0.326 libvisionworks-repo libvisionworks-sfm-repo libvisionworks-tracking-repo
+# clean up space
+sudo apt clean
+
+# installed new jetpack
+apt depends nvidia-jetpack | awk '{print $2}' | xargs -I {} sudo apt install -y {}
