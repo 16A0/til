@@ -1,6 +1,16 @@
 sudo -S apt-get update
 sudo apt update
 sudo apt install nvidia-jetpack
+
+# check version of jetpack
+sudo apt-cache show nvidia-jetpack
+# 29 OCT 2020 results below
+# Package: nvidia-jetpack
+# Version: 4.3-b134
+# Architecture: arm64
+# Maintainer: NVIDIA Corporation
+# Installed-Size: 194
+
 sudo -S apt install -y python3-pip python3-pil python3-smbus python3-matplotlib cmake
 
 # add 4 GB swap file
