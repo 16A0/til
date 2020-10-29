@@ -1,4 +1,6 @@
-sudo -S apt-get updat
+sudo -S apt-get update
+sudo apt update
+sudo apt install nvidia-jetpack
 sudo -S apt install -y python3-pip python3-pil python3-smbus python3-matplotlib cmake
 
 # add 4 GB swap file
