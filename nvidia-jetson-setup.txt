@@ -3,7 +3,7 @@ sudo apt update
 sudo apt install nvidia-jetpack
 
 # update ubuntu
-sudo apt-get update -y; sudo apt update; sudo sudo apt upgrade; sudo apt-get --with-new--pkgs upgrade; sudo apt-get autoclean; sudo apt-get autoremove
+sudo apt-get update -y; sudo apt update; sudo apt upgrade; sudo apt-get --with-new--pkgs upgrade; sudo apt-get autoclean; sudo apt-get autoremove
 # update package held back by reinstalling
 sudo apt-get install --reinstall libjpeg-progs
 # check for ubuntu updates
