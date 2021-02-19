@@ -1,4 +1,4 @@
-rom sklearn.cluster import *
+from sklearn.cluster import *
 from sklearn.decomposition import *
 from sklearn.ensemble import *
 from sklearn.feature_extraction import *
